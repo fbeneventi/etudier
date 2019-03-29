@@ -2,8 +2,8 @@ from sys import exit
 from setuptools import setup
 from distutils.spawn import find_executable
 
-if not (find_executable('chromedriver') or find_executable('chromedriver.exe')):
-    exit('You need to install chromedriver https://sites.google.com/a/chromium.org/chromedriver/')
+#if (find_executable('chromedriver') or find_executable('chromedriver.exe','.')):
+#    exit('You need to install chromedriver https://sites.google.com/a/chromium.org/chromedriver/')
 
 with open("README.md") as f:
     long_description = f.read()

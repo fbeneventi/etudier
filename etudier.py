@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 import re
 import sys
 import json
@@ -76,6 +75,7 @@ def get_id(e):
     usable since it will be a dead end anyway: Scholar doesn't know of 
     anything that cites it.
     """
+    #print(repr(e))
     for a in e.find('.gs_fl a'):
         if 'Cited by' in a.text:
             return get_cluster_id(a.attrs['href'])
@@ -106,7 +106,9 @@ def get_citations(url, depth=1, pages=1):
         to_pub = None
 
     for e in html.find('#gs_res_ccl_mid .gs_r'):
-
+        
+        if 'data-cid' not in e.attrs:
+            continue
         from_pub = get_metadata(e)
         yield from_pub, to_pub
 
